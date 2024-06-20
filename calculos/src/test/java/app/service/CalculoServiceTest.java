@@ -65,6 +65,22 @@ public class CalculoServiceTest {
 		
 	}
 
+	@Test
+	@DisplayName("TESTANDO SOMA COM LISTA VAZIA (RETORNA 0)")
+	void testarSomaComListaVazia() {
+		List<Integer> lista = new ArrayList<>();
 
+		int retorno = this.calculoService.somar(lista);
+
+		assertEquals(0, retorno);
+	}
+
+	@Test
+	@DisplayName("TESTE UNITÁRIO DE LANÇAMENTO DE EXCEÇÃO COM LISTA NULA")
+	void testarSomaComListaNula() {
+		assertThrows(NullPointerException.class, () -> {
+			this.calculoService.somar(null);
+		});
+	}
 
 }

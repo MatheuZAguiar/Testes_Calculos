@@ -48,4 +48,25 @@ public class CalculoControllerTest {
 		
 	}
 
+	@Test
+	@DisplayName("TESTE DE INTEGRAÇÃO MOCANDO O REPOSITORY PARA O MÉTODO FINDALL COM LISTA VAZIA")
+	void cenario2() {
+		List<Saida> listaVazia = new ArrayList<>();
+		when(this.calculoRepository.findAll()).thenReturn(listaVazia);
+
+		ResponseEntity<List<Saida>> response = this.calculoController.findAll();
+		List<Saida> lista = response.getBody();
+
+		assertEquals(0, lista.size());
+	}
+
+	@Test
+	@DisplayName("TESTE DE INTEGRAÇÃO MOCANDO O REPOSITORY PARA LANÇAR EXCEÇÃO")
+	void cenario3() {
+		when(this.calculoRepository.findAll()).thenThrow(new RuntimeException("Erro no banco de dados"));
+
+		assertThrows(RuntimeException.class, () -> {
+			this.calculoController.findAll();
+		});
+	}
 }
