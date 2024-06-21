@@ -32,7 +32,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 <dependency>
     <groupId>com.mysql</groupId>

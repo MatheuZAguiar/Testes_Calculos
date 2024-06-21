@@ -83,4 +83,24 @@ public class CalculoServiceTest {
 		});
 	}
 
+	@Test
+	@DisplayName("TESTE UNITÁRIO DE SOMA DE 1 + 2 + 3")
+	void testarSoma3() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(1);
+		lista.add(2);
+		lista.add(3);
+
+		int retorno = this.calculoService.somar(lista);
+
+		assertEquals(6, retorno);
+	}
+
+	@Test
+	@DisplayName("TESTE UNITÁRIO DE LANÇAMENTO DE EXCEÇÃO COM LISTA NULA NA BUSCA DE MAIOR NÚMERO")
+	void testarMaiorNumeroComListaNula() {
+		assertThrows(NullPointerException.class, () -> {
+			this.calculoService.buscarMaiorNumero(null);
+		});
+	}
 }
